@@ -1,8 +1,8 @@
-﻿using BookManagement.Models;
+using BookMgr.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace BookManagement.Controllers
+namespace BookMgr.Controllers
 {
     public class HomeController : Controller
     {
