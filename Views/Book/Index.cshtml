@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BookMgr.Models.BookViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Publication Date</th>
+            <th>Publisher</th>
+            <th>Authors</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+          <td>@item.Title</td>
+          <td>@item.ISBN</td>
+          <td>@item.PublicationDate.ToShortDateString()</td>
+          <td>@item.PublisherName</td>
+                <td>@foreach (var author in item.Authors)
+                    {
+                        <span>@author.Text<br /></span>
+                    }
+                </td>
+                <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
